@@ -17,6 +17,7 @@ public class User {
 
     @Id
     private long id;
+
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
 

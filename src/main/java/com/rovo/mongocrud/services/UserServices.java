@@ -15,6 +15,7 @@ public class UserServices {
 
     public String addUser(User user){
         userRepo.save(user);
+
         return  "New User Added";
     }
 
@@ -23,7 +24,7 @@ public class UserServices {
     }
 
     public User findUser(long id){
-        return  userRepo.findById(id).orElseThrow();
+        return  userRepo.findUserByID(id).orElseThrow();
     }
 
     public String editUser(long  id,User inputUser){
@@ -39,11 +40,9 @@ public class UserServices {
 
     }
 
-    public String deleteUser(long id){
-        User user = userRepo.findById(id).orElseThrow();
-        userRepo.delete(user);
+    public User deleteUser(long id){
 
-        return "User Deleted";
+        return userRepo.deleteUser(id);
 
 
     }
