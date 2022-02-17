@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/users")
 public class UserController {
 
 
@@ -23,7 +23,7 @@ public class UserController {
     private SequenceGeneratorService sequenceGeneratorService;
 
 
-    @PostMapping("/add")
+    @PostMapping("/")
     public ResponseEntity<String> addUser(@RequestBody User user){
 
         try{
@@ -36,7 +36,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/users")
+    @GetMapping("/")
     public ResponseEntity<?> displayAll(){
 
         try{
@@ -48,7 +48,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public  ResponseEntity<User> findUser(@PathVariable("id") @NonNull long  id){
         try {
             return new ResponseEntity<>(userServices.findUser(id),HttpStatus.OK);
@@ -58,7 +58,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> editUser(@NonNull @PathVariable("id") long id,@RequestBody @NonNull User user){
 
         try{
@@ -72,7 +72,7 @@ public class UserController {
         }
     }
 
-    @PatchMapping("/editCity/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<String> editCity(@NonNull @PathVariable("id") long id, @NonNull @RequestBody User user){
         try{
 
@@ -85,7 +85,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public  ResponseEntity<User> deleteUser(@NonNull @PathVariable("id") long id){
         try{
 
